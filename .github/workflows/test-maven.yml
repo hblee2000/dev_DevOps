@@ -29,6 +29,13 @@ jobs:
         ls -l $HOME/.m2 || echo "$HOME/.m2 does not exist"
         ls -l /root/.m2 || echo "/root/.m2 does not exist"
 
+    - name: Check Maven installation by setup-java  
+      run: |
+       echo "M2_HOME: $M2_HOME"
+       echo "MAVEN_HOME: $MAVEN_HOME"
+       ls -l $RUNNER_TOOL_CACHE/Maven || echo "Maven not found in tool cache"
+       ls -l /opt/hostedtoolcache
+         
     - name: Display environment information
       run: |
         echo "PATH: $PATH"

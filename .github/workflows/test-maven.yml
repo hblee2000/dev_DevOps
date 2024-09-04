@@ -35,6 +35,7 @@ jobs:
         echo "JAVA_HOME: $JAVA_HOME"
         echo "M2_HOME: $M2_HOME"
         ls -l $JAVA_HOME
+        ls -l /usr/bin
         which java
         which mvn
         

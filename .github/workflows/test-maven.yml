@@ -16,6 +16,15 @@ jobs:
         java-version: '11'
         distribution: 'adopt'
 
+    - name: Display environment information
+      run: |
+        echo "PATH: $PATH"
+        echo "JAVA_HOME: $JAVA_HOME"
+        echo "M2_HOME: $M2_HOME"
+        ls -l $JAVA_HOME
+        which java
+        which mvn
+        
     - name: Check Maven version
       run: mvn --version
 

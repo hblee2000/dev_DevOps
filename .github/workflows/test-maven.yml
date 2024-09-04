@@ -28,7 +28,14 @@ jobs:
         # settings.xml 파일 위치 확인
         ls -l $HOME/.m2 || echo "$HOME/.m2 does not exist"
         ls -l /root/.m2 || echo "/root/.m2 does not exist"
-
+        
+    - name: Find mvn in system
+      run: |
+        echo "Searching for mvn in PATH:"
+        which mvn || echo "mvn not found in PATH"
+        echo "Searching for mvn in entire system (this may take a while):"
+        sudo find / -name mvn 2>/dev/null || echo "mvn not found in system search"
+          
     - name: Check Maven installation by setup-java  
       run: |
        echo "M2_HOME: $M2_HOME"

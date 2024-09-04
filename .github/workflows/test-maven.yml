@@ -16,6 +16,19 @@ jobs:
         java-version: '11'
         distribution: 'adopt'
 
+    - name: Check and set environment variables
+      run: |
+        echo "HOME: $HOME"
+        echo "MAVEN_CONFIG: $MAVEN_CONFIG"
+        echo "M2_HOME: $M2_HOME"
+        # MAVEN_CONFIG가 설정되어 있지 않다면 설정
+        if [ -z "$MAVEN_CONFIG" ]; then
+          echo "MAVEN_CONFIG=$HOME/.m2" >> $GITHUB_ENV
+        fi
+        # settings.xml 파일 위치 확인
+        ls -l $HOME/.m2 || echo "$HOME/.m2 does not exist"
+        ls -l /root/.m2 || echo "/root/.m2 does not exist"
+
     - name: Display environment information
       run: |
         echo "PATH: $PATH"
